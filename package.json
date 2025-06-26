@@ -1,7 +1,7 @@
 {
   "name": "programovil-backend",
   "version": "1.0.0",
-  "description": "Backend for the mobile app project",
+  "description": "Backend dependencies",
   "main": "app.js",
   "scripts": {
     "start": "node app.js"
