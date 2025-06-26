@@ -1,15 +1,15 @@
 const express = require('express');
 const app = express();
-const authRoutes = require('./routes/authRoutes');  // Rutas de autenticación
-const courseRoutes = require('./routes/courseRoutes');  // Rutas de cursos
-const reviewRoutes = require('./routes/reviewRoutes');  // Rutas de valoraciones
+const authenticateJWT = require('./config/middleware'); // Importar el middleware
 
-app.use(express.json());  // Para manejar solicitudes JSON
+const authRoutes = require('./routes/authRoutes');
+const courseRoutes = require('./routes/courseRoutes');
+const reviewRoutes = require('./routes/reviewRoutes');
 
-// Usar las rutas
-app.use('/api/auth', authRoutes);
-app.use('/api/courses', courseRoutes);
-app.use('/api/reviews', reviewRoutes);
+// Usar middleware para autenticación en rutas protegidas
+app.use('/api/users', authRoutes);
+app.use('/api/courses', authenticateJWT, courseRoutes);  // Rutas de cursos protegidas
+app.use('/api/reviews', authenticateJWT, reviewRoutes);  // Rutas de valoraciones protegidas
 
 app.listen(3000, () => {
   console.log('Servidor en el puerto 3000');
