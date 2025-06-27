@@ -47,3 +47,23 @@ exports.teacherProfile = async (req,res) => {
         res.status(500).json({ error: err.message });
     }
 }
+
+exports.getTeachersByCollege = async (req, res) => {
+  const { college_id } = req.params;
+
+  try {
+    const teachers = await Teacher.findAll({
+      where: {
+        college_id: college_id
+      }
+    });
+
+    if (!teachers || teachers.length === 0) {
+      return res.status(404).json({ error: 'No se encontraron profesores para esta universidad' });
+    }
+
+    res.status(200).json(teachers);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};

@@ -1,5 +1,6 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../../config/database');
+const Faculty = require('./Faculty');
 
 const Course = sequelize.define('Course', {
   course_id: {
@@ -26,5 +27,11 @@ const Course = sequelize.define('Course', {
 }, {
   timestamps: false,
 });
+
+Course.belongsTo(Faculty, {
+  foreignKey: 'faculty_id',
+  as: 'faculty'
+});
+
 
 module.exports = Course;

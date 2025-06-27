@@ -1,4 +1,5 @@
 const Course = require('../models/course');
+const Faculty = require('../models/Faculty');
 
 // Crear un nuevo curso
 exports.createCourse = async (req, res) => {
@@ -38,6 +39,31 @@ exports.getCourseById = async (req, res) => {
     }
 
     res.status(200).json(course);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+
+// Obtener cursos por universidad
+exports.getCoursesByCollege = async (req, res) => {
+  const { college_id } = req.params;
+
+  try {
+    const courses = await Course.findAll({
+      include: {
+        model: Faculty,
+        as: 'faculty',
+        where: { college_id },
+        attributes: [] 
+      }
+    });
+
+    if (courses.length === 0) {
+      return res.status(404).json({ message: 'No se encontraron cursos para esta universidad' });
+    }
+
+    res.status(200).json(courses);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

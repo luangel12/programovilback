@@ -46,6 +46,10 @@ Authorization: {{token}}
 GET {{baseUrl}}/api/teachers/3
 Authorization: {{token}}
 
+### Obtener un profesor por universidad
+GET http://localhost:3000/api/teachers/college/4
+Authorization: {{token}}
+
 ### Obtener lista de universidades
 GET {{baseUrl}}/api/colleges
 Authorization: {{token}}
@@ -65,7 +69,6 @@ Content-Type: application/json
 GET {{baseUrl}}/api/colleges/3
 Authorization: {{token}}
 
-
 ### Obtener lista de cursos
 GET {{baseUrl}}/api/courses
 Authorization: {{token}}
@@ -82,8 +85,14 @@ Content-Type: application/json
 }
 
 ### Buscar un curso
-GET {{baseUrl}}/api/courses/1
+GET {{baseUrl}}/api/courses/4
 Authorization: {{token}}
+
+### Obtener curso por universidad
+GET http://localhost:3000/api/courses/college/2
+Authorization: {{token}}
+
+### Obtener profesor por curso
 
 ### Obtener el perfil del alumno
 GET {{baseUrl}}/api/users/perfil
