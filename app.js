@@ -2,9 +2,11 @@ const express = require('express');
 const app = express();
 const authenticateJWT = require('./config/middleware'); // Importar el middleware
 
-const authRoutes = require('./routes/authRoutes');
-const courseRoutes = require('./routes/courseRoutes');
-const reviewRoutes = require('./routes/reviewRoutes');
+const authRoutes = require('./app/routes/authRoutes');
+const courseRoutes = require('./app/routes/courseRoutes');
+const reviewRoutes = require('./app/routes/reviewRoutes');
+
+app.use(express.json());
 
 // Usar middleware para autenticación en rutas protegidas
 app.use('/api/users', authRoutes);
