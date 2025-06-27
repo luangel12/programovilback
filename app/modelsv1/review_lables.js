@@ -1,5 +1,5 @@
 const { DataTypes } = require('sequelize');
-const sequelize = require('../config/database');
+const sequelize = require('../../config/database');
 
 const ReviewLabel = sequelize.define('ReviewLabel', {
   review_label_id: {

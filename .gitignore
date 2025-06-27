@@ -1,0 +1,34 @@
+# Node modules
+node_modules/
+
+# Environment variables
+.env
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDEs/Editors
+.vscode/
+.idea/
+
+# Coverage (tests)
+coverage/
+
+# Build
+dist/
+build/
+
+# Sequelize
+*.sqlite
+*.sqlite3
+
+# Optional:
+.env.local
+.env.test
+.env.production

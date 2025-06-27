@@ -4,17 +4,28 @@
   "description": "Backend dependencies",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "dev": "npx nodemon app.js",
+    "sequelize": "sequelize",
+    "load:data": "node scripts/loadData.js",
+    "reset:data": "node scripts/resetDatabase.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
+    "dotenv": "^16.6.0",
+    "ejs": "^3.1.10",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
-    "sequelize": "^6.6.2",
-    "sqlite3": "^5.0.2"
+    "morgan": "^1.10.0",
+    "sequelize": "^6.37.7",
+    "sequelize-cli": "^6.6.3",
+    "socket.io": "^4.8.1",
+    "sqlite3": "^5.1.7"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  },
   "author": "",
   "license": "ISC"
 }

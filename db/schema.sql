@@ -105,4 +105,10 @@ CREATE TABLE review_labels (
 );
 
 
-
+CREATE TABLE teacher_course (
+  teacher_course_id INTEGER PRIMARY KEY AUTOINCREMENT,
+  teacher_id INTEGER NOT NULL,
+  course_id INTEGER NOT NULL,
+  FOREIGN KEY (teacher_id) REFERENCES teachers(teacher_id),
+  FOREIGN KEY (course_id) REFERENCES courses(course_id)
+);

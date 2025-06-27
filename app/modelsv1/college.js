@@ -1,8 +1,8 @@
 const { DataTypes } = require('sequelize');
-const sequelize = require('../config/database');
+const sequelize = require('../../config/database');
 
-const Teacher = sequelize.define('Teacher', {
-  teacher_id: {
+const College = sequelize.define('College', {
+  college_id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,
@@ -15,20 +15,12 @@ const Teacher = sequelize.define('Teacher', {
     type: DataTypes.STRING,
     allowNull: true,
   },
-  college_id: {
-    type: DataTypes.INTEGER,
-    references: {
-      model: 'Colleges',
-      key: 'college_id',
-    },
-    allowNull: false,
-  },
-  ratings: {
+  teachers_amount: {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
 }, {
-  timestamps: false,
+  timestamps: false,  // Desactivar los campos createdAt y updatedAt
 });
 
-module.exports = Teacher;
+module.exports = College;

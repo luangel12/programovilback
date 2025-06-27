@@ -1,4 +1,4 @@
-const Review = require('../models/review');
+const Review = require('../modelsv1/review');
 
 // Crear una nueva valoración
 exports.createReview = async (req, res) => {

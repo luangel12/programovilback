@@ -1,0 +1,40 @@
+@baseUrl = http://localhost:3000
+@session = mysession=MTc0OTMyNjc1M3xEWDhFQVFMX2dBQUJFQUVRQUFBb180QUFBUVp6ZEhKcGJtY01DQUFHYzNSaGRIVnpCbk4wY21sdVp3d0tBQWhoWTNScGRtRjBaUT09fDEwMNRr-eTvIKdIDTSfFrm61NAAZ06WflPGf2t7gHIC
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJqdWFucGVyZXoiLCJlbWFpbCI6Imp1YW5AZXhhbXBsZS5jb20iLCJpYXQiOjE3NTA3NzIyMDcsImV4cCI6MTc1MDc3NTgwN30.hSeUEgEOkta0U8FhnfRXzBZ8IY6wo893Jl3g74vcygA
+
+### Login
+POST {{baseUrl}}/apis/v1/users/sign-in
+Content-Type: application/json
+Cookie: {{session}}
+
+{
+  "username": "juanperez",
+  "password": "123"
+}
+
+### solicitud de nueva contraseña
+POST {{baseUrl}}/apis/v1/users/reset-password
+Content-Type: application/json
+Cookie: {{session}}
+
+{
+  "email": "juan@example.com"
+}
+
+
+### obtener reviews
+GET {{baseUrl}}/api/reviews
+Authorization: Bearer {{token}}
+
+### crear una review
+POST {{baseUrl}}/api/reviews
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "user_id": 1,
+  "teacher_id": 1,
+  "course_id": 1,
+  "comment": "Muy buena clase",
+  "date": "2025-06-26"
+}

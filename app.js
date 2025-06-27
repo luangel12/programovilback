@@ -1,16 +1,47 @@
-const express = require('express');
+// app.js
+require("dotenv").config(); // Cargar variables de entorno
+
+const express = require("express");
+const morgan = require("morgan");
+const sequelize = require("./config/database"); // Conexión a Sequelize
+const authenticateJWT = require("./config/middleware"); // Middleware JWT
+
+// Rutas
+const authRoutes = require("./app/routes/authRoutes");
+const courseRoutes = require("./app/routes/courseRoutes");
+const reviewRoutes = require("./app/routes/reviewRoutes");
+
 const app = express();
-const authenticateJWT = require('./config/middleware'); // Importar el middleware
+const PORT = process.env.PORT || 3001;
 
-const authRoutes = require('./routes/authRoutes');
-const courseRoutes = require('./routes/courseRoutes');
-const reviewRoutes = require('./routes/reviewRoutes');
+// Middlewares globales
+app.use(morgan("dev"));
+app.use(express.json());
+app.use(express.static("public"));
 
-// Usar middleware para autenticación en rutas protegidas
-app.use('/api/users', authRoutes);
-app.use('/api/courses', authenticateJWT, courseRoutes);  // Rutas de cursos protegidas
-app.use('/api/reviews', authenticateJWT, reviewRoutes);  // Rutas de valoraciones protegidas
+// Rutas públicas
+app.use("/api/users", authRoutes);
 
-app.listen(3000, () => {
-  console.log('Servidor en el puerto 3000');
-});
+// Rutas protegidas
+app.use("/api/courses", authenticateJWT, courseRoutes);
+app.use("/api/reviews", authenticateJWT, reviewRoutes);
+
+// Conexión y sincronización con la base de datos
+const startServer = async () => {
+  try {
+    await sequelize.authenticate();
+    console.log("✅ Conexión con la base de datos establecida");
+
+    // Solo usa alter:true si estás desarrollando y quieres actualizar las tablas
+    await sequelize.sync({ alter: true });
+    console.log("📦 Base de datos sincronizada correctamente");
+
+    app.listen(PORT, () => {
+      console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
+    });
+  } catch (err) {
+    console.error("❌ Error al iniciar la app:", err.message);
+  }
+};
+
+startServer();
