@@ -1,5 +1,7 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../../config/database');
+const TeachersCourses = require('./Teachers_courses');
+const Course = require('./course');
 
 const Teacher = sequelize.define('Teacher', {
   teacher_id: {
@@ -29,6 +31,13 @@ const Teacher = sequelize.define('Teacher', {
   },
 }, {
   timestamps: false,
+});
+
+Teacher.belongsToMany(Course, {
+  through: TeachersCourses,
+  foreignKey: 'teacher_id',
+  otherKey: 'course_id',
+  as: 'courses'
 });
 
 module.exports = Teacher;
