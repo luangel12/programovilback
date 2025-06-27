@@ -1,7 +1,7 @@
 const College = require('../models/college')
 
 exports.createCollege = async (req,res) => {
-    const {name,image_url} = req.body;
+    const {name, image_url} = req.body;
     try {
         const college = await College.create({
             name,

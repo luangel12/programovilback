@@ -1,0 +1,79 @@
+@baseUrl = http://localhost:3000
+@session = mysession=MTc0OTMyNjc1M3xEWDhFQVFMX2dBQUJFQUVRQUFBb180QUFBUVp6ZEhKcGJtY01DQUFHYzNSaGRIVnpCbk4wY21sdVp3d0tBQWhoWTNScGRtRjBaUT09fDEwMNRr-eTvIKdIDTSfFrm61NAAZ06WflPGf2t7gHIC
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJpYXQiOjE3NTEwMjkwNTIsImV4cCI6MTc1MTAzMjY1Mn0.zuVabFJSf3MmCyDcTFd2j-I2QvEqHOEAUEhyNHPzQzg
+
+### Login
+POST {{baseUrl}}/api/users/login
+Content-Type: application/json
+Cookie: {{session}}
+
+{
+  "email": "alvaro.mendoza@example.com",
+  "password": "123456"
+}
+
+### Solicitud de nueva contraseña
+POST {{baseUrl}}/apis/v1/users/reset-password
+Content-Type: application/json
+Cookie: {{session}}
+
+{
+  "email": "juan@example.com"
+}
+
+
+### Obtener reviews
+GET {{baseUrl}}/api/reviews
+Authorization: {{token}}
+
+### Crear una review
+POST {{baseUrl}}/api/reviews
+Authorization: {{token}}
+Content-Type: application/json
+
+{
+  "user_id": 1,
+  "teacher_id": 1,
+  "course_id": 1,
+  "comment": "Muy buena clase",
+  "date": "2025-06-26"
+}
+
+### Obtener profesores
+GET {{baseUrl}}/api/teachers
+Authorization: {{token}}
+
+### Obtener un profesor
+GET {{baseUrl}}/api/teachers/3
+Authorization: {{token}}
+
+### Obtener lista de universidades
+GET {{baseUrl}}/api/colleges
+Authorization: {{token}}
+
+### Crear una universidad
+POST {{baseUrl}}/api/colleges
+Authorization: {{token}}
+Content-Type: application/json
+
+{
+    "name": "UTEC",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/UTEC-Logo.jpg/960px-UTEC-Logo.jpg",
+    "teachers_amount": 120
+}
+
+
+### Obtener lista de cursos
+GET {{baseUrl}}/api/courses
+Authorization: {{token}}
+
+### Crear un curso
+POST {{baseUrl}}/api/courses
+Authorization: {{token}}
+Content-Type: application/json
+
+{
+  "name": "Programación III",
+  "faculty_id": 1,
+  "teachers_amount": 3
+}
