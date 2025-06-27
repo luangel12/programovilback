@@ -4,7 +4,8 @@
   "description": "Backend dependencies",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "dev": "nodemon app.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -14,7 +15,9 @@
     "sequelize": "^6.6.2",
     "sqlite3": "^5.0.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  },
   "author": "",
   "license": "ISC"
 }
