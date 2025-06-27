@@ -8,4 +8,7 @@ router.get('/', collegeController.getColleges);
 // Ruta para crear una nueva universidad
 router.post('/', collegeController.createCollege);
 
+// Ruta para buscar universidad
+router.get('/:id', collegeController.getCollegeById);
+
 module.exports = router;

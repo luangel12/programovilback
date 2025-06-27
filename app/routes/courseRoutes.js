@@ -8,4 +8,8 @@ router.get('/', courseController.getCourses);
 // Ruta para crear un nuevo curso
 router.post('/', courseController.createCourse);
 
+// Ruta para obtener un curso por ID
+router.get('/:id', courseController.getCourseById);
+
+
 module.exports = router;

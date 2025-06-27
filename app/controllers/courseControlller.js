@@ -26,3 +26,19 @@ exports.getCourses = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+
+// Obtener un curso por ID
+exports.getCourseById = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const course = await Course.findByPk(id);
+    if (!course) {
+      return res.status(404).json({ message: 'Curso no encontrado' });
+    }
+
+    res.status(200).json(course);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};

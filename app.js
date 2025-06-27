@@ -7,6 +7,8 @@ const courseRoutes = require('./app/routes/courseRoutes');
 const reviewRoutes = require('./app/routes/reviewRoutes');
 const collegeRoutes = require('./app/routes/collegeRoutes')
 const teacherRoutes = require('./app/routes/teacherRouter')
+const userRoutes = require('./app/routes/userRoutes')
+
 
 app.use(express.json());
 
@@ -16,6 +18,7 @@ app.use('/api/courses', authenticateJWT, courseRoutes);  // Rutas de cursos prot
 app.use('/api/reviews', authenticateJWT, reviewRoutes);  // Rutas de valoraciones protegidas
 app.use('/api/colleges', authenticateJWT, collegeRoutes)
 app.use('/api/teachers', authenticateJWT, teacherRoutes)
+app.use('/api/users', authenticateJWT, userRoutes)
 
 app.listen(3000, () => {
   console.log('Servidor en el puerto 3000');

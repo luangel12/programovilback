@@ -23,3 +23,17 @@ exports.getColleges =  async (req,res) => {
     res.status(500).json({ error: err.message });
   }
 }
+
+// Obtener una universidad por ID
+exports.getCollegeById = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const college = await College.findByPk(id);
+    if (!college) {
+      return res.status(404).json({ error: 'Universidad no encontrada' });
+    }
+    res.status(200).json(college);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};

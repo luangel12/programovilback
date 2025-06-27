@@ -1,6 +1,6 @@
 @baseUrl = http://localhost:3000
 @session = mysession=MTc0OTMyNjc1M3xEWDhFQVFMX2dBQUJFQUVRQUFBb180QUFBUVp6ZEhKcGJtY01DQUFHYzNSaGRIVnpCbk4wY21sdVp3d0tBQWhoWTNScGRtRjBaUT09fDEwMNRr-eTvIKdIDTSfFrm61NAAZ06WflPGf2t7gHIC
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJpYXQiOjE3NTEwMjkwNTIsImV4cCI6MTc1MTAzMjY1Mn0.zuVabFJSf3MmCyDcTFd2j-I2QvEqHOEAUEhyNHPzQzg
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJpYXQiOjE3NTEwMzI1NzIsImV4cCI6MTc1MTAzNjE3Mn0.lctxMDPFW5OFIzfsFbJitqzR-c68pXHS02KvzoDGt20
 
 ### Login
 POST {{baseUrl}}/api/users/login
@@ -20,7 +20,6 @@ Cookie: {{session}}
 {
   "email": "juan@example.com"
 }
-
 
 ### Obtener reviews
 GET {{baseUrl}}/api/reviews
@@ -62,6 +61,10 @@ Content-Type: application/json
     "teachers_amount": 120
 }
 
+### Obtener una universidad
+GET {{baseUrl}}/api/colleges/3
+Authorization: {{token}}
+
 
 ### Obtener lista de cursos
 GET {{baseUrl}}/api/courses
@@ -77,3 +80,11 @@ Content-Type: application/json
   "faculty_id": 1,
   "teachers_amount": 3
 }
+
+### Buscar un curso
+GET {{baseUrl}}/api/courses/1
+Authorization: {{token}}
+
+### Obtener el perfil del alumno
+GET {{baseUrl}}/api/users/perfil
+Authorization: {{token}}
