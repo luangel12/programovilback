@@ -1,6 +1,6 @@
 @baseUrl = http://localhost:3000
 @session = mysession=MTc0OTMyNjc1M3xEWDhFQVFMX2dBQUJFQUVRQUFBb180QUFBUVp6ZEhKcGJtY01DQUFHYzNSaGRIVnpCbk4wY21sdVp3d0tBQWhoWTNScGRtRjBaUT09fDEwMNRr-eTvIKdIDTSfFrm61NAAZ06WflPGf2t7gHIC
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJpYXQiOjE3NTE1MTk5NzcsImV4cCI6MTc1MTUyMzU3N30.TxIfFR8qKKy2MXPcwtuVId30N7C0eiJCmdCBMosP1i8
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJpYXQiOjE3NTE1NzYwMDUsImV4cCI6MTc1MTU3OTYwNX0.JHYMCepGhi0JnaGudi4JUFlOToTUEKOWwpOEnnqCDjU
 
 ### Login
 POST {{baseUrl}}/api/users/login
@@ -43,10 +43,10 @@ GET {{baseUrl}}/api/teachers
 Authorization: {{token}}
 
 ### Obtener un profesor
-GET {{baseUrl}}/api/teachers/1
+GET {{baseUrl}}/api/teachers/2
 Authorization: {{token}}
 
-### Obtener un profesor por universidad
+### Obtener profesores por universidad
 GET http://localhost:3000/api/teachers/college/3
 Authorization: {{token}}
 
@@ -88,7 +88,7 @@ Content-Type: application/json
 GET {{baseUrl}}/api/courses/4
 Authorization: {{token}}
 
-### Obtener curso por universidad
+### Obtener cursos por universidad
 GET http://localhost:3000/api/courses/college/2
 Authorization: {{token}}
 

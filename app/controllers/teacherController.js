@@ -4,6 +4,9 @@ const College = require('../models/college')
 const TeachersColleges = require('../models/teachers_colleges');
 const ReviewLabel = require('../models/review_lables')
 const Label = require('../models/label')
+const Course = require('../models/course');
+const TeacherCourse = require('../models/teacher_course')
+
 
 exports.createTeacher = async (req,res) => {
     const {name,image_url,college_id,ratings} = req.body;
@@ -102,6 +105,37 @@ exports.getTeachersByCollege = async (req, res) => {
     }
 
     res.status(200).json(teachers);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+exports.getTeachersByCourse = async (req, res) => {
+  const { course_id } = req.params;
+
+  try {
+
+    const course = await Course.findByPk(course_id);
+
+    const fetchTeachers = await TeacherCourse.findAll({
+      where:{
+        course_id
+      }
+    })
+
+    const teachersIds = fetchTeachers.map(x => x.teacher_id)
+
+    const teachers = await Teacher.findAll({
+      where: {
+        college_id: teachersIds
+      }
+    });
+
+    if (!teachers || teachers.length === 0) {
+      return res.status(404).json({ error: 'No se encontraron profesores para esta universidad' });
+    }
+
+    res.status(200).json({course,teachers});
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
