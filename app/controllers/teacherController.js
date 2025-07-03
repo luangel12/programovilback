@@ -2,6 +2,8 @@ const Teacher = require('../models/teacher')
 const Review = require('../models/review');
 const College = require('../models/college')
 const TeachersColleges = require('../models/teachers_colleges');
+const ReviewLabel = require('../models/review_lables')
+const Label = require('../models/label')
 
 exports.createTeacher = async (req,res) => {
     const {name,image_url,college_id,ratings} = req.body;
@@ -60,7 +62,26 @@ exports.teacherProfile = async (req,res) => {
                 teacher_id:id
             }
         });
-        res.status(200).json({teacher,colleges,reviews});
+
+        const reviewIds = reviews.map((x) => x.review_id)
+
+        const fetchLabels = await ReviewLabel.findAll({
+            where: {
+                review_id: reviewIds
+            }
+        });
+
+        const labelsIds = [...new Set(fetchLabels.map((item) => item.dataValues.label_id))].filter(x => x>4);
+
+        const labelsFetch = await Label.findAll({
+          where:{
+            label_id:labelsIds
+          }
+        })
+
+        const labels = labelsFetch.map(x => x.dataValues)
+        
+        res.status(200).json({teacher,colleges,labels,reviews});
     } catch (err) {
         res.status(500).json({ error: err.message });
     }
