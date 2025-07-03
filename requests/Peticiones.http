@@ -1,6 +1,6 @@
 @baseUrl = http://localhost:3000
 @session = mysession=MTc0OTMyNjc1M3xEWDhFQVFMX2dBQUJFQUVRQUFBb180QUFBUVp6ZEhKcGJtY01DQUFHYzNSaGRIVnpCbk4wY21sdVp3d0tBQWhoWTNScGRtRjBaUT09fDEwMNRr-eTvIKdIDTSfFrm61NAAZ06WflPGf2t7gHIC
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJpYXQiOjE3NTE1NzYwMDUsImV4cCI6MTc1MTU3OTYwNX0.JHYMCepGhi0JnaGudi4JUFlOToTUEKOWwpOEnnqCDjU
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJpYXQiOjE3NTE1ODAzOTIsImV4cCI6MTc1MTU4Mzk5Mn0.N1RDB_YbW3EYGp-hdfRO_fCdSDAV5hDofPoZGuhXygQ
 
 ### Login
 POST {{baseUrl}}/api/users/login
@@ -93,6 +93,8 @@ GET http://localhost:3000/api/courses/college/2
 Authorization: {{token}}
 
 ### Obtener profesor por curso
+GET {{baseUrl}}/api/teachers/course/4
+Authorization: {{token}}
 
 ### Obtener el perfil del alumno
 GET {{baseUrl}}/api/users/perfil
