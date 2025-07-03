@@ -1,5 +1,7 @@
 const Teacher = require('../models/teacher')
 const Review = require('../models/review');
+const College = require('../models/college')
+const TeachersColleges = require('../models/teachers_colleges');
 
 exports.createTeacher = async (req,res) => {
     const {name,image_url,college_id,ratings} = req.body;
@@ -37,12 +39,28 @@ exports.teacherProfile = async (req,res) => {
         if(!teacher){
             res.status(400).json({error: 'Profesor no encontrado'})
         }
+
+        const fetchColleges = await TeachersColleges.findAll({where:{
+          teacher_id:id
+        }})
+
+        const collegesIds = fetchColleges.map((x) => x.college_id)
+
+        const fetchColleges2 = await College.findAll({
+            where: {
+                college_id: collegesIds
+            },
+            attributes: ['college_id', 'name']
+        });
+
+        const colleges = fetchColleges2.map((x) =>x.dataValues);
+
         const reviews = await Review.findAll({
             where:{
                 teacher_id:id
             }
         });
-        res.status(200).json({teacher,reviews});
+        res.status(200).json({teacher,colleges,reviews});
     } catch (err) {
         res.status(500).json({ error: err.message });
     }

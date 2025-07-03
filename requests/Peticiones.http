@@ -1,6 +1,6 @@
 @baseUrl = http://localhost:3000
 @session = mysession=MTc0OTMyNjc1M3xEWDhFQVFMX2dBQUJFQUVRQUFBb180QUFBUVp6ZEhKcGJtY01DQUFHYzNSaGRIVnpCbk4wY21sdVp3d0tBQWhoWTNScGRtRjBaUT09fDEwMNRr-eTvIKdIDTSfFrm61NAAZ06WflPGf2t7gHIC
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJpYXQiOjE3NTEwMzI1NzIsImV4cCI6MTc1MTAzNjE3Mn0.lctxMDPFW5OFIzfsFbJitqzR-c68pXHS02KvzoDGt20
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJpYXQiOjE3NTE1MTk5NzcsImV4cCI6MTc1MTUyMzU3N30.TxIfFR8qKKy2MXPcwtuVId30N7C0eiJCmdCBMosP1i8
 
 ### Login
 POST {{baseUrl}}/api/users/login
@@ -43,11 +43,11 @@ GET {{baseUrl}}/api/teachers
 Authorization: {{token}}
 
 ### Obtener un profesor
-GET {{baseUrl}}/api/teachers/3
+GET {{baseUrl}}/api/teachers/1
 Authorization: {{token}}
 
 ### Obtener un profesor por universidad
-GET http://localhost:3000/api/teachers/college/4
+GET http://localhost:3000/api/teachers/college/3
 Authorization: {{token}}
 
 ### Obtener lista de universidades
