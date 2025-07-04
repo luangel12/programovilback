@@ -46,6 +46,10 @@ Content-Type: application/json
   "date": "2025-06-26"
 }
 
+### Obtener preguntas 
+GET {{baseUrl}}/api/rate
+Authorization: {{token}}
+
 ### Obtener profesores
 GET {{baseUrl}}/api/teachers
 Authorization: {{token}}
