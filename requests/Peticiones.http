@@ -1,6 +1,6 @@
 @baseUrl = http://localhost:3000
 @session = mysession=MTc0OTMyNjc1M3xEWDhFQVFMX2dBQUJFQUVRQUFBb180QUFBUVp6ZEhKcGJtY01DQUFHYzNSaGRIVnpCbk4wY21sdVp3d0tBQWhoWTNScGRtRjBaUT09fDEwMNRr-eTvIKdIDTSfFrm61NAAZ06WflPGf2t7gHIC
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJpYXQiOjE3NTE2MzIwNzEsImV4cCI6MTc1MTYzNTY3MX0.GwwqdbWe-IOgVBhdtgSKDzNOQcVNKbgKro7ffWsQ7mA
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJpYXQiOjE3NTE2Mzk1MDksImV4cCI6MTc1MTY0MzEwOX0.9bzsg5sLJHjwHuGjfLnnMl3oH8oWDrvW0JJuCvzJHc8
 
 ### Login
 POST {{baseUrl}}/api/users/login
@@ -23,6 +23,14 @@ Cookie: {{session}}
 
 ### Obtener reviews
 GET {{baseUrl}}/api/reviews
+Authorization: {{token}}
+
+### Obtener reviews por profesor
+GET {{baseUrl}}/api/reviews/2
+Authorization: {{token}}
+
+### Obtener labels por profesor
+GET {{baseUrl}}/api/reviews/labels/1
 Authorization: {{token}}
 
 ### Crear una review

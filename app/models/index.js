@@ -5,6 +5,7 @@ const Faculty = require('./faculty');
 const Course = require('./course');
 const Review = require('./review');
 const Label = require('./label');
+const Group = require('./group')
 const ReviewLabel = require('./review_label');
 const TeachersCourses = require('./teachers_courses');
 const TeachersColleges = require('./teachers_colleges');
@@ -25,11 +26,28 @@ Faculty.belongsTo(College, { foreignKey: 'college_id' });
 Faculty.hasMany(Course, { foreignKey: 'faculty_id' });
 Course.belongsTo(Faculty, { foreignKey: 'faculty_id' });
 
+Review.belongsToMany(Label, { through: ReviewLabel, foreignKey: 'review_id', otherKey: 'label_id'});
+Label.belongsToMany(Review, { through: ReviewLabel, foreignKey: 'label_id', otherKey: 'review_id'});
+
+Label.belongsTo(Group, { foreignKey: 'group_id' });
+Group.hasMany(Label, { foreignKey: 'group_id' });
+
 Teacher.belongsToMany(Course, { through: TeachersCourses });
 Course.belongsToMany(Teacher, { through: TeachersCourses });
 
 Teacher.belongsToMany(College, { through: TeachersColleges });
 College.belongsToMany(Teacher, { through: TeachersColleges });
 
-Review.belongsToMany(Label, { through: ReviewLabel });
-Label.belongsToMany(Review, { through: ReviewLabel });
+module.exports = {
+  User,
+  Teacher,
+  College,
+  Faculty,
+  Course,
+  Review,
+  Label,
+  Group,
+  ReviewLabel,
+  TeachersCourses,
+  TeachersColleges,
+};

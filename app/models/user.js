@@ -25,6 +25,7 @@ const User = sequelize.define('User', {
     allowNull: true,
   },
 }, {
+  tableName: 'users',
   timestamps: false, // Desactivar los campos createdAt y updatedAt
 });
 

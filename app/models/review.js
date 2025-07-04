@@ -40,6 +40,7 @@ const Review = sequelize.define('Review', {
     defaultValue: DataTypes.NOW,  // Establece la fecha de creación automáticamente
   },
 }, {
+  tableName: 'reviews',
   timestamps: false,  // Desactivar los campos createdAt y updatedAt
 });
 

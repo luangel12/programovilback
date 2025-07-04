@@ -24,6 +24,7 @@ const ReviewLabel = sequelize.define('Review_Label', {
     allowNull: false,
   },
 }, {
+  tableName: 'review_labels',
   timestamps: false,  // Desactivar los campos createdAt y updatedAt
 });
 
