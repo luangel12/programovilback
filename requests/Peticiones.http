@@ -1,6 +1,6 @@
 @baseUrl = http://localhost:3000
 @session = mysession=MTc0OTMyNjc1M3xEWDhFQVFMX2dBQUJFQUVRQUFBb180QUFBUVp6ZEhKcGJtY01DQUFHYzNSaGRIVnpCbk4wY21sdVp3d0tBQWhoWTNScGRtRjBaUT09fDEwMNRr-eTvIKdIDTSfFrm61NAAZ06WflPGf2t7gHIC
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJpYXQiOjE3NTE2Mzk1MDksImV4cCI6MTc1MTY0MzEwOX0.9bzsg5sLJHjwHuGjfLnnMl3oH8oWDrvW0JJuCvzJHc8
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJpYXQiOjE3NTE2NDMxNjcsImV4cCI6MTc1MTY0Njc2N30.cCWeLlpc_AGObD_bfMGRrcDD4Ls81Nx65ukdE_17-wo
 
 ### Login
 POST {{baseUrl}}/api/users/login
@@ -26,11 +26,15 @@ GET {{baseUrl}}/api/reviews
 Authorization: {{token}}
 
 ### Obtener reviews por profesor
-GET {{baseUrl}}/api/reviews/2
+GET {{baseUrl}}/api/reviews/1
 Authorization: {{token}}
 
 ### Obtener labels por profesor
 GET {{baseUrl}}/api/reviews/labels/1
+Authorization: {{token}}
+
+### Obtener reviews por profesor
+GET {{baseUrl}}/api/reviews/2
 Authorization: {{token}}
 
 ### Crear una review
@@ -39,11 +43,10 @@ Authorization: {{token}}
 Content-Type: application/json
 
 {
-  "user_id": 1,
   "teacher_id": 1,
   "course_id": 1,
-  "comment": "Muy buena clase",
-  "date": "2025-06-26"
+  "comment": "Muy buena clase ejemploooo",
+  "label_ids": [1, 6, 9]
 }
 
 ### Obtener preguntas 
@@ -111,3 +114,4 @@ Authorization: {{token}}
 ### Obtener el perfil del alumno
 GET {{baseUrl}}/api/users/perfil
 Authorization: {{token}}
+

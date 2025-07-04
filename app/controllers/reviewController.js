@@ -137,3 +137,32 @@ exports.getLabelsByTeacher = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+
+exports.createReview = async (req, res) => {
+  try {
+    const { teacher_id, course_id, comment, label_ids } = req.body;
+    const user_id = req.user.user_id; 
+
+    if (!teacher_id || !course_id || !Array.isArray(label_ids)) {
+      return res.status(400).json({ error: 'Faltan campos obligatorios' });
+    }
+
+    // Crear el review
+    const review = await Review.create({
+      user_id,
+      teacher_id,
+      course_id,
+      comment,
+      date: new Date()
+    });
+
+    // Asociar etiquetas
+    await review.addLabels(label_ids);
+
+    res.status(201).json({ message: 'Review creado con éxito' });
+  } catch (err) {
+    console.error('Error al crear review:', err);
+    res.status(500).json({ error: err.message });
+  }
+};
