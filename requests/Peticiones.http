@@ -1,6 +1,6 @@
 @baseUrl = http://localhost:3000
 @session = mysession=MTc0OTMyNjc1M3xEWDhFQVFMX2dBQUJFQUVRQUFBb180QUFBUVp6ZEhKcGJtY01DQUFHYzNSaGRIVnpCbk4wY21sdVp3d0tBQWhoWTNScGRtRjBaUT09fDEwMNRr-eTvIKdIDTSfFrm61NAAZ06WflPGf2t7gHIC
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJpYXQiOjE3NTEwMzI1NzIsImV4cCI6MTc1MTAzNjE3Mn0.lctxMDPFW5OFIzfsFbJitqzR-c68pXHS02KvzoDGt20
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJpYXQiOjE3NTE2MzIwNzEsImV4cCI6MTc1MTYzNTY3MX0.GwwqdbWe-IOgVBhdtgSKDzNOQcVNKbgKro7ffWsQ7mA
 
 ### Login
 POST {{baseUrl}}/api/users/login
@@ -66,7 +66,7 @@ Content-Type: application/json
 }
 
 ### Obtener una universidad
-GET {{baseUrl}}/api/colleges/3
+GET {{baseUrl}}/api/colleges/2
 Authorization: {{token}}
 
 ### Obtener lista de cursos
