@@ -1,5 +1,10 @@
+const dotenv = require("dotenv");
+dotenv.config()
+
 const express = require('express');
 const app = express();
+
+const PORT = process.env.PORT || 3001;
 const authenticateJWT = require('./config/middleware'); // Importar el middleware
 
 const authRoutes = require('./app/routes/authRoutes');
@@ -22,6 +27,6 @@ app.use('/api/colleges', authenticateJWT, collegeRoutes)
 app.use('/api/teachers', authenticateJWT, teacherRoutes)
 app.use('/api/users', authenticateJWT, userRoutes)
 
-app.listen(3000, () => {
-  console.log('Servidor en el puerto 3000');
+app.listen(PORT, () => {
+  console.log(`Servidor en el puerto  ${PORT}`);
 });
