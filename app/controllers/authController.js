@@ -16,7 +16,7 @@ exports.register = async (req, res) => {
     });
     
     const token = jwt.sign({ user_id: user.user_id }, 'secretkey', { expiresIn: '1h' });
-    res.status(201).json({ token });
+    res.status(201).json({ token, success: true });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
