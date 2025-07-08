@@ -3,7 +3,7 @@ const User = require('../models/user');
 
 // Registro de usuario
 exports.register = async (req, res) => {
-  const { username, email, password, image_url, college_id } = req.body;
+  const { username, email, password} = req.body;
 
   try {
     const hashedPassword = password //await bcrypt.hash(password, 10);
@@ -11,8 +11,8 @@ exports.register = async (req, res) => {
       username,
       email,
       password: hashedPassword,
-      image_url,
-      college_id,
+      image_url: 'assets/images/profileDefault.png',
+      college_id: 1,
     });
     
     const token = jwt.sign({ user_id: user.user_id }, 'secretkey', { expiresIn: '1h' });
