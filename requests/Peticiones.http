@@ -12,6 +12,17 @@ Cookie: {{session}}
   "password": "123456"
 }
 
+### Signin
+POST {{baseUrl}}/api/users/register
+Content-Type: application/json
+Cookie: {{session}}
+
+{
+  "username": "Sideron",
+  "email": "edumontero3315@gmail.com",
+  "password": "123456"
+}
+
 ### Solicitud de nueva contraseña
 POST {{baseUrl}}/apis/v1/users/reset-password
 Content-Type: application/json
