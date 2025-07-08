@@ -1,5 +1,5 @@
-const Course = require('../models/course');
-const Faculty = require('../models/Faculty');
+
+const { Teacher, Course, Faculty} = require('../models');
 
 // Crear un nuevo curso
 exports.createCourse = async (req, res) => {
@@ -64,6 +64,29 @@ exports.getCoursesByCollege = async (req, res) => {
     }
 
     res.status(200).json(courses);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+
+exports.getCoursesByTeacher = async (req, res) => {
+  const { teacher_id } = req.params;
+
+  try {
+    const teacher = await Teacher.findByPk(teacher_id, {
+      include: {
+        model: Course,
+        as: 'courses_t',
+        through: { attributes: [] }, 
+      },
+    });
+
+    if (!teacher) {
+      return res.status(404).json({ message: 'Profesor no encontrado' });
+    }
+
+    res.status(200).json(teacher.courses_t);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

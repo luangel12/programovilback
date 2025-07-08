@@ -1,6 +1,6 @@
 const { Review, User, Course, Label, Group} = require('../models');
 const sequelize = require('../../config/database');
-const { Op } = require('sequelize');
+const { Op, fn, col, literal } = require('sequelize');
 
 
 // Crear una nueva valoración
@@ -101,15 +101,15 @@ exports.getReviewsByTeacher = async (req, res) => {
 
 //Obtener labels por profesor
 exports.getLabelsByTeacher = async (req, res) => {
-   const { teacher_id } = req.params;
-   
-  try {
+  const { teacher_id } = req.params;
 
+  try {
     const labels = await Label.findAll({
       attributes: [
         'label_id',
         'name',
-        [sequelize.fn('COUNT', sequelize.col('Reviews.review_id')), 'usage_count']
+        [fn('COUNT', col('Reviews.review_id')), 'usage_count'],
+        [col('Group.group_id'), 'group_id'], 
       ],
       include: [
         {
@@ -119,16 +119,16 @@ exports.getLabelsByTeacher = async (req, res) => {
         },
         {
           model: Group,
-          attributes: ['group_id'],
+          attributes: [],
           where: {
             group_id: {
-              [Op.ne]: 1  
+              [Op.ne]: 1
             }
           }
         }
       ],
-      group: ['Label.label_id'],
-      order: [[sequelize.literal('usage_count'), 'DESC']]
+      group: ['Label.label_id', 'Group.group_id'],
+      order: [[literal('usage_count'), 'DESC']]
     });
 
     res.status(200).json(labels);
@@ -137,7 +137,6 @@ exports.getLabelsByTeacher = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
-
 
 exports.createReview = async (req, res) => {
   try {

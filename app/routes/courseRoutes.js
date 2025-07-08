@@ -14,4 +14,7 @@ router.get('/:id', courseController.getCourseById);
 // Obtener cursos por universidad
 router.get('/college/:college_id', courseController.getCoursesByCollege);
 
+//Obtener cursos por profesor
+router.get('/profesor/:teacher_id', courseController.getCoursesByTeacher);
+
 module.exports = router;

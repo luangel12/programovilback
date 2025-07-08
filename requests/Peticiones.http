@@ -1,6 +1,6 @@
 @baseUrl = http://localhost:3000
 @session = mysession=MTc0OTMyNjc1M3xEWDhFQVFMX2dBQUJFQUVRQUFBb180QUFBUVp6ZEhKcGJtY01DQUFHYzNSaGRIVnpCbk4wY21sdVp3d0tBQWhoWTNScGRtRjBaUT09fDEwMNRr-eTvIKdIDTSfFrm61NAAZ06WflPGf2t7gHIC
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJpYXQiOjE3NTE2NzcwNTQsImV4cCI6MTc1MTY4MDY1NH0.wzeWklodtAfl0Qw7SYAUzuynlrLqkKj4hGmrJpjvEC0
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJpYXQiOjE3NTE3NzQ0MzksImV4cCI6MTc1MTc3ODAzOX0.T09312cpYzXr2O2lFLLI1bv7RXOXQjb7Nl8Gq3wyDzE
 
 ### Login
 POST {{baseUrl}}/api/users/login
@@ -98,6 +98,10 @@ Content-Type: application/json
 
 ### Buscar un curso
 GET {{baseUrl}}/api/courses/4
+Authorization: {{token}}
+
+### Buscar cursos por profesor
+GET {{baseUrl}}/api/courses/profesor/3
 Authorization: {{token}}
 
 ### Obtener cursos por universidad

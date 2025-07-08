@@ -24,6 +24,7 @@ const TeachersCourses = sequelize.define('TeachersCourses', {
     allowNull: false,
   },
 }, {
+  tableName: 'teacher_course',
   timestamps: false,
 });
 

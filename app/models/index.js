@@ -32,11 +32,24 @@ Label.belongsToMany(Review, { through: ReviewLabel, foreignKey: 'label_id', othe
 Label.belongsTo(Group, { foreignKey: 'group_id' });
 Group.hasMany(Label, { foreignKey: 'group_id' });
 
-Teacher.belongsToMany(Course, { through: TeachersCourses });
-Course.belongsToMany(Teacher, { through: TeachersCourses });
+Teacher.belongsToMany(Course, {
+  through: TeachersCourses,
+  foreignKey: 'teacher_id',
+  otherKey: 'course_id',
+  as: 'courses_t'
+});
+Course.belongsToMany(Teacher, {
+  through: TeachersCourses,
+  foreignKey: 'course_id',
+  otherKey: 'teacher_id',
+  as: 'teachers'
+});
 
 Teacher.belongsToMany(College, { through: TeachersColleges });
 College.belongsToMany(Teacher, { through: TeachersColleges });
+
+User.belongsTo(College, { foreignKey: 'college_id', as: 'college' });
+College.hasMany(User, { foreignKey: 'college_id' });
 
 module.exports = {
   User,

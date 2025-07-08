@@ -1,4 +1,4 @@
-const { Review, User, Course, Label, Group, Teacher} = require('../models');
+const { Review, User, Course, Label, Group, Teacher, College } = require('../models');
 
 const formatUserReviews = (reviews) => {
   return reviews.map(r => {
@@ -9,7 +9,7 @@ const formatUserReviews = (reviews) => {
     return {
       review_id: r.review_id,
       comment: r.comment,
-      date: new Date(r.date).toISOString().split('T')[0], 
+      date: new Date(r.date).toISOString().split('T')[0],
       courseName: r.Course?.name || '',
       emoji: emojiLabel?.name || '',
       labels: otherLabels.map(l => ({
@@ -51,6 +51,11 @@ exports.getProfile = async (req, res) => {
   try {
     const user = await User.findByPk(req.user.user_id, {
       attributes: ['user_id', 'username', 'email', 'image_url', 'college_id'],
+      include: {
+        model: College,
+        as: 'college',
+        attributes: ['name']
+      }
     });
 
     if (!user) {
@@ -80,7 +85,14 @@ exports.getProfile = async (req, res) => {
     const formattedReviews = formatUserReviews(reviews);
 
     res.status(200).json({
-      userData: user,
+      userData: {
+        user_id: user.user_id,
+        username: user.username,
+        email: user.email,
+        image_url: user.image_url,
+        college_id: user.college_id,
+        collegeName: user.college?.name || null,
+      },
       reviews: formattedReviews,
     });
   } catch (err) {
