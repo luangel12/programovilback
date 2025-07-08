@@ -1,6 +1,6 @@
 @baseUrl = http://localhost:3000
 @session = mysession=MTc0OTMyNjc1M3xEWDhFQVFMX2dBQUJFQUVRQUFBb180QUFBUVp6ZEhKcGJtY01DQUFHYzNSaGRIVnpCbk4wY21sdVp3d0tBQWhoWTNScGRtRjBaUT09fDEwMNRr-eTvIKdIDTSfFrm61NAAZ06WflPGf2t7gHIC
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJpYXQiOjE3NTE3NzQ0MzksImV4cCI6MTc1MTc3ODAzOX0.T09312cpYzXr2O2lFLLI1bv7RXOXQjb7Nl8Gq3wyDzE
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJpYXQiOjE3NTIwMDMzMzcsImV4cCI6MTc1MjAwNjkzN30.njeKX3dRXZm2OV4a1oHA1sgEQ79Qlrz9EFecm9WTHOw
 
 ### Login
 POST {{baseUrl}}/api/users/login
@@ -34,20 +34,20 @@ Cookie: {{session}}
 
 ### Obtener reviews
 GET {{baseUrl}}/api/reviews
-Authorization: {{token}}
+Authorization: Bearer {{token}}
 
 ### Obtener reviews por profesor
 GET {{baseUrl}}/api/reviews/1
-Authorization: {{token}}
+Authorization: Bearer {{token}}
 
 ### Obtener labels por profesor
 GET {{baseUrl}}/api/reviews/labels/1
-Authorization: {{token}}
+Authorization: Bearer {{token}}
 
 
 ### Crear una review
 POST {{baseUrl}}/api/reviews
-Authorization: {{token}}
+Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
@@ -98,7 +98,7 @@ Authorization: {{token}}
 
 ### Crear un curso
 POST {{baseUrl}}/api/courses
-Authorization: {{token}}
+Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
@@ -125,5 +125,5 @@ Authorization: {{token}}
 
 ### Obtener el perfil del alumno
 GET {{baseUrl}}/api/users/perfil
-Authorization: {{token}}
+Authorization: Bearer {{token}}
 

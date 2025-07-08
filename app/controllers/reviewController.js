@@ -109,7 +109,7 @@ exports.getLabelsByTeacher = async (req, res) => {
         'label_id',
         'name',
         [fn('COUNT', col('Reviews.review_id')), 'usage_count'],
-        [col('Group.group_id'), 'group_id'], 
+        [col('Group.group_id'), 'group_id'], // <- Esto expone group_id directamente
       ],
       include: [
         {
@@ -119,7 +119,7 @@ exports.getLabelsByTeacher = async (req, res) => {
         },
         {
           model: Group,
-          attributes: [],
+          attributes: [], // <- No queremos anidar Group, solo usar su columna
           where: {
             group_id: {
               [Op.ne]: 1

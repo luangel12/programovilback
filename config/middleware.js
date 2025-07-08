@@ -1,18 +1,20 @@
 const jwt = require('jsonwebtoken');
 
 const authenticateJWT = (req, res, next) => {
-  const token = req.headers['authorization'];
+  const authHeader = req.headers['authorization'];
 
-  if (!token) {
-    return res.status(403).json({ error: 'Token no proporcionado' });
+  if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    return res.status(403).json({ error: 'Token no proporcionado o mal formado' });
   }
+
+  const token = authHeader.split(' ')[1]; // Extrae solo el token (sin 'Bearer')
 
   jwt.verify(token, 'secretkey', (err, user) => {
     if (err) {
       return res.status(403).json({ error: 'Token no válido' });
     }
-    
-    req.user = user;  // Guardar usuario en la solicitud
+
+    req.user = user;
     next();
   });
 };
