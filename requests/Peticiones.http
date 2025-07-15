@@ -1,7 +1,6 @@
 @baseUrl = http://localhost:3000
 @session = mysession=MTc0OTMyNjc1M3xEWDhFQVFMX2dBQUJFQUVRQUFBb180QUFBUVp6ZEhKcGJtY01DQUFHYzNSaGRIVnpCbk4wY21sdVp3d0tBQWhoWTNScGRtRjBaUT09fDEwMNRr-eTvIKdIDTSfFrm61NAAZ06WflPGf2t7gHIC
-@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJpYXQiOjE3NTIyMDE1NjAsImV4cCI6MTc1MjIwNTE2MH0.FycC16C8uZ_r_dpsUWR0nIMjQ7RMdzyK2K8khHboc1g
-
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJpYXQiOjE3NTI2MjEwMDAsImV4cCI6MTc1MjYyNDYwMH0.BEfBuzKNn4RSDGhZ6jQBQgNGNRmqMwPkck-kQHXujJw
 ### Login
 POST {{baseUrl}}/api/users/login
 Content-Type: application/json
@@ -59,27 +58,27 @@ Content-Type: application/json
 
 ### Obtener preguntas 
 GET {{baseUrl}}/api/rate
-Authorization: {{token}}
+Authorization: Bearer {{token}}
 
 ### Obtener profesores
 GET {{baseUrl}}/api/teachers
-Authorization: {{token}}
+Authorization: Bearer {{token}}
 
 ### Obtener un profesor
-GET {{baseUrl}}/api/teachers/2
-Authorization: {{token}}
+GET {{baseUrl}}/api/teachers/3
+Authorization: Bearer {{token}}
 
 ### Obtener profesores por universidad
-GET http://localhost:3000/api/teachers/college/3
-Authorization: {{token}}
+GET http://localhost:3000/api/teachers/college/1
+Authorization: Bearer {{token}}
 
 ### Obtener lista de universidades
 GET {{baseUrl}}/api/colleges
-Authorization: {{token}}
+Authorization: Bearer {{token}}
 
 ### Crear una universidad
 POST {{baseUrl}}/api/colleges
-Authorization: {{token}}
+Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
@@ -90,11 +89,11 @@ Content-Type: application/json
 
 ### Obtener una universidad
 GET {{baseUrl}}/api/colleges/2
-Authorization: {{token}}
+Authorization: Bearer {{token}}
 
 ### Obtener lista de cursos
 GET {{baseUrl}}/api/courses
-Authorization: {{token}}
+Authorization: Bearer {{token}}
 
 ### Crear un curso
 POST {{baseUrl}}/api/courses
@@ -109,19 +108,19 @@ Content-Type: application/json
 
 ### Buscar un curso
 GET {{baseUrl}}/api/courses/4
-Authorization: {{token}}
+Authorization: Bearer {{token}}
 
 ### Buscar cursos por profesor
 GET {{baseUrl}}/api/courses/profesor/3
-Authorization: {{token}}
+Authorization: Bearer {{token}}
 
 ### Obtener cursos por universidad
 GET http://localhost:3000/api/courses/college/2
-Authorization: {{token}}
+Authorization: Bearer {{token}}
 
 ### Obtener profesor por curso
 GET {{baseUrl}}/api/teachers/course/4
-Authorization: {{token}}
+Authorization: Bearer {{token}}
 
 ### Obtener el perfil del alumno
 GET {{baseUrl}}/api/users/perfil

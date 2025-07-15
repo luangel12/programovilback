@@ -45,11 +45,15 @@ exports.teacherProfile = async (req,res) => {
             res.status(400).json({error: 'Profesor no encontrado'})
         }
 
+        console.log('Obtebniendo profe info')
+        
         const fetchColleges = await TeachersColleges.findAll({where:{
           teacher_id:id
         }})
 
         const collegesIds = fetchColleges.map((x) => x.college_id)
+
+        console.log('Obtebniendo unis ids')
 
         const fetchColleges2 = await College.findAll({
             where: {
@@ -60,11 +64,15 @@ exports.teacherProfile = async (req,res) => {
 
         const colleges = fetchColleges2.map((x) =>x.dataValues);
 
+        console.log('Obtebniendo unis info')
+
         const reviews = await Review.findAll({
             where:{
                 teacher_id:id
             }
         });
+
+        console.log('Obtebniendo reviews info')
 
         const reviewIds = reviews.map((x) => x.review_id)
 
@@ -81,6 +89,8 @@ exports.teacherProfile = async (req,res) => {
             label_id:labelsIds
           }
         })
+
+        console.log('Obtebniendo labels')
 
         const labels = labelsFetch.map(x => x.dataValues)
         
