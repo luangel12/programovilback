@@ -1,6 +1,6 @@
 @baseUrl = http://localhost:3000
 @session = mysession=MTc0OTMyNjc1M3xEWDhFQVFMX2dBQUJFQUVRQUFBb180QUFBUVp6ZEhKcGJtY01DQUFHYzNSaGRIVnpCbk4wY21sdVp3d0tBQWhoWTNScGRtRjBaUT09fDEwMNRr-eTvIKdIDTSfFrm61NAAZ06WflPGf2t7gHIC
-@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJpYXQiOjE3NTI2MjgyMjUsImV4cCI6MTc1MjYzMTgyNX0.dydKLtFuI0PY48c6ejBYEMB2xNqS3WR0NkaafrgKPRg
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJpYXQiOjE3NTI2OTQ3MjksImV4cCI6MTc1MjY5ODMyOX0.nUSUKkOzeJqXkrIBzUXG-_lm9_J1z5xkUvE66sfVk7M
 ### Login
 POST {{baseUrl}}/api/users/login
 Content-Type: application/json
@@ -20,6 +20,15 @@ Cookie: {{session}}
   "username": "Sideron",
   "email": "edumontero3315@gmail.com",
   "password": "123456"
+}
+
+### Editar perfil
+POST {{baseUrl}}/api/perfil/editar
+Authorization: Bearer {{token}}
+Content-Type: application/json
+{
+  "username":"alvaroM",
+  "college_id":2
 }
 
 ### Solicitud de nueva contraseña
@@ -118,7 +127,7 @@ Authorization: Bearer {{token}}
 GET http://localhost:3000/api/courses/college/2
 Authorization: Bearer {{token}}
 
-### Obtener profesor por curso
+### Obtener profesores por curso
 GET {{baseUrl}}/api/teachers/course/4
 Authorization: Bearer {{token}}
 
