@@ -1,6 +1,6 @@
 @baseUrl = http://localhost:3000
 @session = mysession=MTc0OTMyNjc1M3xEWDhFQVFMX2dBQUJFQUVRQUFBb180QUFBUVp6ZEhKcGJtY01DQUFHYzNSaGRIVnpCbk4wY21sdVp3d0tBQWhoWTNScGRtRjBaUT09fDEwMNRr-eTvIKdIDTSfFrm61NAAZ06WflPGf2t7gHIC
-@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJpYXQiOjE3NTI2MjEwMDAsImV4cCI6MTc1MjYyNDYwMH0.BEfBuzKNn4RSDGhZ6jQBQgNGNRmqMwPkck-kQHXujJw
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJpYXQiOjE3NTI2MjgyMjUsImV4cCI6MTc1MjYzMTgyNX0.dydKLtFuI0PY48c6ejBYEMB2xNqS3WR0NkaafrgKPRg
 ### Login
 POST {{baseUrl}}/api/users/login
 Content-Type: application/json

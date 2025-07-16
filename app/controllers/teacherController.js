@@ -125,8 +125,6 @@ exports.getTeachersByCourse = async (req, res) => {
 
   try {
 
-    const course = await Course.findByPk(course_id);
-
     const fetchTeachers = await TeacherCourse.findAll({
       where:{
         course_id
@@ -141,11 +139,11 @@ exports.getTeachersByCourse = async (req, res) => {
       }
     });
 
-    if (!teachers || teachers.length === 0) {
+    /*if (!teachers || teachers.length === 0) {
       return res.status(404).json({ error: 'No se encontraron profesores para esta universidad' });
-    }
+    }*/
 
-    res.status(200).json({course,teachers});
+    res.status(200).json(teachers);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
