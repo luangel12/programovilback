@@ -23,9 +23,10 @@ Cookie: {{session}}
 }
 
 ### Editar perfil
-POST {{baseUrl}}/api/perfil/editar
+PUT {{baseUrl}}/api/users/editar
 Authorization: Bearer {{token}}
 Content-Type: application/json
+
 {
   "username":"alvaroM",
   "college_id":2
